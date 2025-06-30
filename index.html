@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYL Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #faf9f7;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 2rem;
+            border-bottom: 1px solid #000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #000;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: normal;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Geometric Elements - More Way of Code Style */
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            border: 1px solid #000;
+            opacity: 0.15;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: 15%;
+            left: 5%;
+            border-radius: 50%;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 45%;
+            right: 10%;
+            transform: rotate(45deg);
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 60%;
+            border-radius: 50%;
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 1px;
+            top: 30%;
+            right: 25%;
+            background: #000;
+            border: none;
+            transform: rotate(30deg);
+        }
+
+        .shape-5 {
+            width: 80px;
+            height: 80px;
+            bottom: 40%;
+            left: 15%;
+            transform: rotate(45deg);
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 8rem 2rem;
+            border-bottom: 1px solid #000;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .philosophy-header h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .philosophy-text {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .philosophy-text p {
+            margin-bottom: 2rem;
+        }
+
+        .philosophy-visual {
+            position: relative;
+            height: 400px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            width: 80%;
+            height: 80%;
+        }
+
+        .grid-cell {
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.3s ease;
+        }
+
+        .grid-cell:hover::before {
+            left: 0;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 2rem;
+            border-bottom: 1px solid #000;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .process-header h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #000;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .step-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #000;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .step-icon:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .step-symbol {
+            font-size: 1.5rem;
+            font-weight: normal;
+            z-index: 1;
+            color: #000;
+            transition: color 0.3s ease;
+        }
+
+        .step-icon:hover .step-symbol {
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        .step-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 8rem 2rem;
+            background: #000;
+            color: #fff;
+            border-bottom: 1px solid #000;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .value-card {
+            border: 1px solid #fff;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+        }
+
+        .value-card:hover::before {
+            left: 0;
+        }
+
+        .value-card:hover {
+            color: #000;
+        }
+
+        .value-card * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .value-card:hover .value-description {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .footer-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.3s ease;
+        }
+
+        .footer-button:hover::before {
+            left: 0;
+        }
+
+        .footer-button:hover {
+            color: #fff;
+        }
+
+        .footer-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 0.8rem;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            left: 0;
+        }
+
+        .social-link:hover {
+            color: #faf9f7;
+        }
+
+        .social-link span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            
+            .interactive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LYL Capital</div>
+            <ul class="nav-links">
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#values">Values</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="geometric-bg">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+            <div class="geometric-shape shape-4"></div>
+            <div class="geometric-shape shape-5"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Building Communities</h1>
+            <p class="hero-subtitle">We focus on the preservation and creation of attainable housing communities and redevelopment of retail and hospitality spaces. These investments capture demographic shifts and evolving consumer behaviors. The path to superior returns lies not in doing more, but in doing what matters. We individually capitalize and evaluate each investment so that we can focus on its relationship to community, its position in market cycles, and its potential for genuine value creation.</p>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <div class="philosophy-header">
+            <h2>Philosophy</h2>
+        </div>
+        <div class="philosophy-grid">
+            <div class="philosophy-text">
+                <p>Our investment thesis centers on demographic and technological shifts creating unprecedented demand for attainable housing and experiential retail—positioning our partners at the forefront of generational wealth creation.</p>
+                
+                <p>We focus on housing development and redevelopment that captures the affordability gap, alongside hospitality and retail spaces positioned as essential third places—active environments where evolving consumer behaviors drive sustainable revenue streams.</p>
+                
+                <p>We've built a track record and platform that delivers exceptional tax-advantaged returns while creating meaningful community impact for our family office and institutional partners.</p>
+            </div>
+            <div class="philosophy-visual">
+                <div class="interactive-grid">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="process-container">
+            <div class="process-header">
+                <h2>Process</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <div class="step-symbol">◊</div>
+                    </div>
+                    <div class="step-title">Analyze</div>
+                    <div class="step-description">We begin with comprehensive market analysis, community demographics, and asset potential. Every investment decision is grounded in data-driven opportunity assessment, moving with market forces rather than against them.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <div class="step-symbol">△</div>
+                    </div>
+                    <div class="step-title">Design</div>
+                    <div class="step-description">We design a thorough asset management and redevelopment plan with an investment structure that reflects each plan. We eliminate complexity that doesn't serve purpose and ask essential questions up front, trusting the process.</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <div class="step-symbol">□</div>
+                    </div>
+                    <div class="step-title">Execute</div>
+                    <div class="step-description">Once we have our business plan and aligned goals with our partners, we execute with conviction and build operational strength that endures.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="values">
+        <div class="values-container">
+            <h2>Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-title">Customer Focus</div>
+                    <div class="value-description">We build wealth alongside our clients, creating value through spaces that exceed expectations while maintaining the highest standards in every decision.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">Ethical Foundation</div>
+                    <div class="value-description">Our business practices are guided by unwavering integrity, building long-lasting relationships with clients and stakeholders through principled development.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">Vision & Innovation</div>
+                    <div class="value-description">We set clear visions for the future of community living and focus intently on driving those visions to reality through thoughtful innovation.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">Calculated Risk-Taking</div>
+                    <div class="value-description">Our approach to development is bold yet grounded—taking meaningful risks that serve communities while protecting our partners' investments.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">Collaborative Leadership</div>
+                    <div class="value-description">Every project succeeds through teamwork, accountability, and mentorship. We create environments where every voice contributes to better outcomes.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">Elegant Simplicity</div>
+                    <div class="value-description">In a complex industry, we find power in simplicity—staying agile and responsive to create spaces that feel effortless yet deeply considered.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="footer">
+        <div class="footer-container">
+            <h2>Partner With Us</h2>
+            <p>Ready to capitalize on the future of community-centered development? Join us in creating assets that deliver exceptional returns while serving tomorrow's market demands.</p>
+            <a href="mailto:info@lylcapital.com" class="footer-button">
+                <span>Explore Partnership</span>
+            </a>
+            
+            <div class="social-links">
+                <a href="https://x.com/" class="social-link" target="_blank" rel="noopener">
+                    <span>X / Twitter</span>
+                </a>
+                <a href="https://linkedin.com/company/" class="social-link" target="_blank" rel="noopener">
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Interactive grid
+        const gridCells = document.querySelectorAll('.grid-cell');
+        gridCells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                // Flash effect
+                cell.style.background = '#000';
+                setTimeout(() => {
+                    cell.style.background = '';
+                }, 200);
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Geometric shapes animation
+        const shapes = document.querySelectorAll('.geometric-shape');
+        let scrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            scrollY = window.pageYOffset;
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.1);
+                shape.style.transform = `translateY(${scrollY * speed}px) ${shape.classList.contains('shape-1') ? 'rotate(45deg)' : shape.classList.contains('shape-3') ? 'translateX(-50%) rotate(30deg)' : ''}`;
+            });
+        });
+
+        // Process step interactions
+        const stepIcons = document.querySelectorAll('.step-icon');
+        stepIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                icon.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
