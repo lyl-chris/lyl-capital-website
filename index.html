@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYL Capital</title>
+    <title>LYL Capital - Building With Founders</title>
     <style>
         * {
             margin: 0;
@@ -91,12 +91,12 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 2rem;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: normal;
             line-height: 1.2;
             margin-bottom: 3rem;
@@ -108,11 +108,11 @@
             font-size: 1.1rem;
             font-weight: normal;
             line-height: 1.8;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        /* Geometric Elements - More Way of Code Style */
+        /* Geometric Elements */
         .geometric-bg {
             position: absolute;
             top: 0;
@@ -208,6 +208,14 @@
             margin-bottom: 2rem;
         }
 
+        .philosophy-text blockquote {
+            font-style: italic;
+            opacity: 0.8;
+            border-left: 2px solid #000;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
         .philosophy-visual {
             position: relative;
             height: 400px;
@@ -248,36 +256,36 @@
             left: 0;
         }
 
-        /* Process Section */
-        .process {
+        /* Services Section */
+        .services {
             padding: 8rem 2rem;
             border-bottom: 1px solid #000;
         }
 
-        .process-container {
+        .services-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .process-header {
+        .services-header {
             text-align: center;
             margin-bottom: 6rem;
         }
 
-        .process-header h2 {
+        .services-header h2 {
             font-size: 2rem;
             font-weight: normal;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .process-steps {
+        .services-steps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 4rem;
         }
 
-        .process-step {
+        .service-step {
             text-align: center;
             position: relative;
         }
@@ -338,21 +346,21 @@
             opacity: 0.8;
         }
 
-        /* Values Section */
-        .values {
+        /* Approach Section */
+        .approach {
             padding: 8rem 2rem;
             background: #000;
             color: #fff;
             border-bottom: 1px solid #000;
         }
 
-        .values-container {
+        .approach-container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .values h2 {
+        .approach h2 {
             font-size: 2rem;
             font-weight: normal;
             text-transform: uppercase;
@@ -360,13 +368,13 @@
             margin-bottom: 6rem;
         }
 
-        .values-grid {
+        .approach-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
         }
 
-        .value-card {
+        .approach-card {
             border: 1px solid #fff;
             padding: 3rem 2rem;
             position: relative;
@@ -374,7 +382,7 @@
             cursor: pointer;
         }
 
-        .value-card::before {
+        .approach-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -385,33 +393,33 @@
             transition: left 0.3s ease;
         }
 
-        .value-card:hover::before {
+        .approach-card:hover::before {
             left: 0;
         }
 
-        .value-card:hover {
+        .approach-card:hover {
             color: #000;
         }
 
-        .value-card * {
+        .approach-card * {
             position: relative;
             z-index: 1;
         }
 
-        .value-title {
+        .approach-title {
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 1rem;
         }
 
-        .value-description {
+        .approach-description {
             font-size: 0.9rem;
             line-height: 1.6;
             opacity: 0.8;
         }
 
-        .value-card:hover .value-description {
+        .approach-card:hover .approach-description {
             opacity: 1;
         }
 
@@ -438,6 +446,13 @@
             font-size: 1rem;
             line-height: 1.8;
             margin-bottom: 3rem;
+        }
+
+        .footer-locations {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            opacity: 0.8;
         }
 
         .footer-button {
@@ -537,7 +552,7 @@
                 gap: 3rem;
             }
             
-            .process-steps {
+            .services-steps {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -560,9 +575,9 @@
         <div class="nav-container">
             <div class="logo">LYL Capital</div>
             <ul class="nav-links">
-                <li><a href="#philosophy">Philosophy</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#values">Values</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -577,22 +592,28 @@
             <div class="geometric-shape shape-5"></div>
         </div>
         <div class="hero-content">
-            <h1>Building Communities</h1>
-            <p class="hero-subtitle">We focus on the preservation and creation of attainable housing communities and redevelopment of retail and hospitality spaces. These investments capture demographic shifts and evolving consumer behaviors. The path to superior returns lies not in doing more, but in doing what matters. We individually capitalize and evaluate each investment so that we can focus on its relationship to community, its position in market cycles, and its potential for genuine value creation.</p>
+            <h1>Building With Founders</h1>
+            <p class="hero-subtitle">The best businesses emerge when founders can focus on what matters—serving customers, building community, creating value. We remove the infrastructure barriers that kill momentum before you launch.</p>
         </div>
     </section>
 
-    <section id="philosophy" class="philosophy">
+    <section id="about" class="philosophy">
         <div class="philosophy-header">
-            <h2>Philosophy</h2>
+            <h2>Why We Exist</h2>
         </div>
         <div class="philosophy-grid">
             <div class="philosophy-text">
-                <p>Our investment thesis centers on demographic and technological shifts creating unprecedented demand for attainable housing and experiential retail—positioning our partners at the forefront of generational wealth creation.</p>
+                <blockquote>"The more people who own little businesses of their own, the safer our country will be, and the better off its cities and towns; for the people who have a stake in their country and their community are its best citizens." - John Hancock</blockquote>
                 
-                <p>We focus on housing development and redevelopment that captures the affordability gap, alongside hospitality and retail spaces positioned as essential third places—active environments where evolving consumer behaviors drive sustainable revenue streams.</p>
+                <p>I spent years at big law firms doing sophisticated deals—armies of advisors, unlimited resources, complex structures. At 30, cancer forced me to reassess everything. I left to build businesses I actually cared about in my own community.</p>
                 
-                <p>We've built a track record and platform that delivers exceptional tax-advantaged returns while creating meaningful community impact for our family office and institutional partners.</p>
+                <p>That's when I learned the truth: the system isn't built for founders. It's built to extract. I had years of deal experience and still got crushed by the grind—permitting delays that killed momentum, legal costs that drained capital, bureaucratic roadblocks that had nothing to do with the quality of the idea.</p>
+                
+                <p>I watched better businesses than mine fail. Not because they lacked vision or commitment, but because founders spent all their energy fighting systems instead of building. The barrier to entry isn't the idea anymore—it's navigating the infrastructure designed to gatekeep.</p>
+                
+                <p>LYL Capital exists to remove those barriers. We provide what founders struggle with most: entity formation that's done right the first time, permitting expertise that moves projects forward, capital strategy that opens doors, and deal guidance that comes from years of institutional experience applied to real-world challenges.</p>
+                
+                <p>If you're committed and the idea serves your community, we'll help you build it.</p>
             </div>
             <div class="philosophy-visual">
                 <div class="interactive-grid">
@@ -610,64 +631,64 @@
         </div>
     </section>
 
-    <section id="process" class="process">
-        <div class="process-container">
-            <div class="process-header">
-                <h2>Process</h2>
+    <section id="services" class="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2>What We Do</h2>
             </div>
-            <div class="process-steps">
-                <div class="process-step">
+            <div class="services-steps">
+                <div class="service-step">
                     <div class="step-icon">
                         <div class="step-symbol">◊</div>
                     </div>
-                    <div class="step-title">Analyze</div>
-                    <div class="step-description">We begin with comprehensive market analysis, community demographics, and asset potential. Every investment decision is grounded in data-driven opportunity assessment, moving with market forces rather than against them.</div>
+                    <div class="step-title">Legal & Formation</div>
+                    <div class="step-description">Entity formation, legal structure, lease negotiation, and real estate advisory. We handle the foundation so you can focus on your business.</div>
                 </div>
-                <div class="process-step">
+                <div class="service-step">
                     <div class="step-icon">
                         <div class="step-symbol">△</div>
                     </div>
-                    <div class="step-title">Design</div>
-                    <div class="step-description">We design a thorough asset management and redevelopment plan with an investment structure that reflects each plan. We eliminate complexity that doesn't serve purpose and ask essential questions up front, trusting the process.</div>
+                    <div class="step-title">Permitting & Regulatory</div>
+                    <div class="step-description">Permitting and regulatory navigation. We know the systems, the timelines, and how to move projects through bureaucracy efficiently.</div>
                 </div>
-                <div class="process-step">
+                <div class="service-step">
                     <div class="step-icon">
                         <div class="step-symbol">□</div>
                     </div>
-                    <div class="step-title">Execute</div>
-                    <div class="step-description">Once we have our business plan and aligned goals with our partners, we execute with conviction and build operational strength that endures.</div>
+                    <div class="step-title">Capital & Strategy</div>
+                    <div class="step-description">Funding support, capital strategy, grant identification, and development consulting. We help you access the resources your business needs to launch and scale.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="values" class="values">
-        <div class="values-container">
-            <h2>Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-title">Customer Focus</div>
-                    <div class="value-description">We build wealth alongside our clients, creating value through spaces that exceed expectations while maintaining the highest standards in every decision.</div>
+    <section id="approach" class="approach">
+        <div class="approach-container">
+            <h2>How We Work</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-title">Flexible Engagement</div>
+                    <div class="approach-description">Project-based, retainer, or equity partnership depending on the opportunity and stage of your business. We adapt to what works for you.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-title">Ethical Foundation</div>
-                    <div class="value-description">Our business practices are guided by unwavering integrity, building long-lasting relationships with clients and stakeholders through principled development.</div>
+                <div class="approach-card">
+                    <div class="approach-title">Founder-Focused</div>
+                    <div class="approach-description">We serve founders building retail, hospitality, service businesses, and community-focused projects. Startups that need to launch. Small businesses ready to scale.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-title">Vision & Innovation</div>
-                    <div class="value-description">We set clear visions for the future of community living and focus intently on driving those visions to reality through thoughtful innovation.</div>
+                <div class="approach-card">
+                    <div class="approach-title">Practical Expertise</div>
+                    <div class="approach-description">Years of big law deal experience applied to real-world founder challenges. We know sophisticated structures and how to make them work at any scale.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-title">Calculated Risk-Taking</div>
-                    <div class="value-description">Our approach to development is bold yet grounded—taking meaningful risks that serve communities while protecting our partners' investments.</div>
+                <div class="approach-card">
+                    <div class="approach-title">Community Impact</div>
+                    <div class="approach-description">We back development projects that activate neighborhoods and businesses that create local value. Your stake in your community matters.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-title">Collaborative Leadership</div>
-                    <div class="value-description">Every project succeeds through teamwork, accountability, and mentorship. We create environments where every voice contributes to better outcomes.</div>
+                <div class="approach-card">
+                    <div class="approach-title">No Bullshit Approach</div>
+                    <div class="approach-description">If you're committed and the idea is solid, we'll help you get it done. We don't gatekeep—we remove barriers.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-title">Elegant Simplicity</div>
-                    <div class="value-description">In a complex industry, we find power in simplicity—staying agile and responsive to create spaces that feel effortless yet deeply considered.</div>
+                <div class="approach-card">
+                    <div class="approach-title">Speed Matters</div>
+                    <div class="approach-description">We understand that time kills deals. Our expertise means faster permitting, cleaner structures, and quicker access to capital.</div>
                 </div>
             </div>
         </div>
@@ -675,17 +696,23 @@
 
     <section id="contact" class="footer">
         <div class="footer-container">
-            <h2>Partner With Us</h2>
-            <p>Ready to capitalize on the future of community-centered development? Join us in creating assets that deliver exceptional returns while serving tomorrow's market demands.</p>
+            <h2>Let's Build Your Business</h2>
+            <p>Ready to remove the barriers holding you back? Whether you need legal formation, permitting navigation, or capital strategy—we're here to help you launch and scale.</p>
+            
+            <div class="footer-locations">
+                50 Milk Street, Boston, MA<br>
+                60 Columbian Street, Suite 2, Braintree, MA
+            </div>
+            
             <a href="mailto:info@lylcapital.com" class="footer-button">
-                <span>Explore Partnership</span>
+                <span>Get Started</span>
             </a>
             
             <div class="social-links">
-                <a href="https://x.com/lylcapital" class="social-link" target="_blank" rel="noopener">
+                <a href="https://x.com/" class="social-link" target="_blank" rel="noopener">
                     <span>X / Twitter</span>
                 </a>
-                <a href="https://linkedin.com/company/lylcapital" class="social-link" target="_blank" rel="noopener">
+                <a href="https://linkedin.com/company/" class="social-link" target="_blank" rel="noopener">
                     <span>LinkedIn</span>
                 </a>
             </div>
@@ -716,7 +743,6 @@
         const gridCells = document.querySelectorAll('.grid-cell');
         gridCells.forEach(cell => {
             cell.addEventListener('click', () => {
-                // Flash effect
                 cell.style.background = '#000';
                 setTimeout(() => {
                     cell.style.background = '';
@@ -746,11 +772,11 @@
             scrollY = window.pageYOffset;
             shapes.forEach((shape, index) => {
                 const speed = 0.5 + (index * 0.1);
-                shape.style.transform = `translateY(${scrollY * speed}px) ${shape.classList.contains('shape-1') ? 'rotate(45deg)' : shape.classList.contains('shape-3') ? 'translateX(-50%) rotate(30deg)' : ''}`;
+                shape.style.transform = `translateY(${scrollY * speed}px)`;
             });
         });
 
-        // Process step interactions
+        // Service step interactions
         const stepIcons = document.querySelectorAll('.step-icon');
         stepIcons.forEach(icon => {
             icon.addEventListener('click', () => {
